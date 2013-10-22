@@ -84,18 +84,15 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
 
 :: 3. Build Test Project to the temporary path
 echo Building test project
-IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
-  %MSBUILD_PATH% "%DEPLOYMENT_SOURCE%\AzureTestSite.Test\AzureTestSite.Test.csproj" /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="%DEPLOYMENT_TEMP%";AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release /p:SolutionDir="%DEPLOYMENT_SOURCE%\.\\" %SCM_BUILD_ARGS%
-) ELSE (
-  %MSBUILD_PATH% "%DEPLOYMENT_SOURCE%\AzureTestSite.Test\AzureTestSite.Test.csproj" /nologo /verbosity:m /t:Build /p:AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release /p:SolutionDir="%DEPLOYMENT_SOURCE%\.\\" %SCM_BUILD_ARGS%
-)
+%MSBUILD_PATH% "%DEPLOYMENT_SOURCE%\AzureTestSite.Test\AzureTestSite.Test.csproj" /nologo /verbosity:m /t:Build /p:AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release /p:SolutionDir="%DEPLOYMENT_SOURCE%\.\\" %SCM_BUILD_ARGS%
+
 
 IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 4. Running Tests
 echo Running Tests
-%DEPLOYMENT_SOURCE%\packages\NUnit.Runners.2.6.3\tools\nunit-console.exe "%DEPLOYMENT_TEMP%\AzureTestSite.Test.dll"
-
+%DEPLOYMENT_SOURCE%\packages\NUnit.Runners.2.6.3\tools\nunit-console.exe "%DEPLOYMENT_SOURCE%\AzureTestSite.Test\bin\Release\AzureTestSite.Test.dll"
+echo Done runnning tests.
 
 :: 5. KuduSync
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
