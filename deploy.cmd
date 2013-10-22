@@ -94,6 +94,7 @@ echo Running Tests
 %DEPLOYMENT_SOURCE%\packages\NUnit.Runners.2.6.3\tools\nunit-console.exe "%DEPLOYMENT_SOURCE%\AzureTestSite.Test\bin\Release\AzureTestSite.Test.dll"
 echo Done runnning tests.
 
+IF !ERRORLEVEL! NEQ 0 goto error
 :: 5. KuduSync
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
   call %KUDU_SYNC_CMD% -v 50 -f "%DEPLOYMENT_TEMP%" -t "%DEPLOYMENT_TARGET%" -n "%NEXT_MANIFEST_PATH%" -p "%PREVIOUS_MANIFEST_PATH%" -i ".git;.hg;.deployment;deploy.cmd"
