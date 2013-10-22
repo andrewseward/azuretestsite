@@ -32,3 +32,4 @@ C:\dev\spikes\AzureTestSite\AzureTestSite\bin\System.Web.WebPages.Deployment.xml
 C:\dev\spikes\AzureTestSite\AzureTestSite\bin\System.Web.WebPages.Razor.xml
 C:\dev\spikes\AzureTestSite\AzureTestSite\obj\Debug\AzureTestSite.dll
 C:\dev\spikes\AzureTestSite\AzureTestSite\obj\Debug\AzureTestSite.pdb
+C:\dev\spikes\AzureTestSite\AzureTestSite\obj\Debug\AzureTestSite.csprojResolveAssemblyReference.cache
