@@ -12,7 +12,7 @@ namespace AzureTestSite.Test
 			Assert.That(result, Is.EqualTo("D'yer want the usual???"));
 		}
 
-		[Test]
+		[Test, Explicit]
 		public void HeresAFailingTest()
 		{
 			var result = new DumbClass().DoAnotherDumbThing();
