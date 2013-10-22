@@ -94,7 +94,7 @@ IF !ERRORLEVEL! NEQ 0 goto error
 
 :: 4. Running Tests
 echo Running Tests
-%DEPLOYMENT_SOURCE%\packages\NUnit.Runners.2.6.3\tools\nunit-console.exe "%DEPLOYMENT_TEMP%\Tests\AzureTestSite.Test.dll"
+%DEPLOYMENT_SOURCE%\packages\NUnit.Runners.2.6.3\tools\nunit-console.exe "%DEPLOYMENT_TEMP%\AzureTestSite.Test.dll"
 
 
 :: 5. KuduSync
